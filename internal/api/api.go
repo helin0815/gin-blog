@@ -8,14 +8,18 @@ import (
 )
 
 type Apis struct {
-	user *User
+	user     *User
+	articles *Articles
 }
 
-func NewAPIS(user *User) *Apis {
+func NewAPIS(user *User, articles *Articles) *Apis {
 	return &Apis{
-		user: user,
+		user:     user,
+		articles: articles,
 	}
 }
+
+// 对应的前端文件是：/opt/data01/testcode/vuepro
 
 func (as *Apis) SetupRoute(r *gin.Engine) {
 	r.Use(CorsMiddleware())
@@ -23,11 +27,11 @@ func (as *Apis) SetupRoute(r *gin.Engine) {
 	r.POST("/login", as.user.Login)
 	//r.Group("/api/v1")
 	r.Group("/")
-	r.Use(CorsMiddleware())
 	{
 
 		r.GET("/hello", as.HelloWorld)
 		r.POST("/register", as.user.Register)
+		r.GET("/articles", as.articles.List)
 	}
 }
 

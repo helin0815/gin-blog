@@ -14,6 +14,7 @@ var (
 	RootPath   = filepath.Join(filepath.Dir(b), "../")
 	MysqlDSN   string
 	ListenAddr string
+	Debug      bool
 )
 
 func AutomaticEnv() {
@@ -23,6 +24,7 @@ func AutomaticEnv() {
 		return
 	}
 	viper.AutomaticEnv()
+	Debug = viper.GetBool("DEBUG")
 	MysqlDSN = viper.GetString("MYSQL_DSN")
 	ListenAddr = viper.GetString("LISTEN_ADDR")
 }

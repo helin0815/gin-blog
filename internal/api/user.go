@@ -26,7 +26,7 @@ func (u *User) Login(c *gin.Context) {
 		return
 	}
 	fmt.Println("user name:", userM)
-	isAdmin, err := u.uSvc.GetInfo(userM.Name, userM.Password)
+	isAdmin, err := u.uSvc.GetInfo(userM.Username, userM.Password)
 	if err != nil {
 		utils.JSONServerError(c, utils.GenerateErrMsg("登录失败：", err.Error()))
 		return

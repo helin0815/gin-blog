@@ -18,6 +18,6 @@ type Users struct {
 	AuthCode   string    `json:"authCode" gorm:"column:authCode"`
 }
 type LoginUser struct {
-	Name     string `json:"name" gorm:"name" binging:"required"`
+	Username string `json:"username" gorm:"name" binging:"required"`
 	Password string `json:"password" gorm:"password" binging:"required"`
 }
